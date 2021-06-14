@@ -77,10 +77,10 @@ public class ProductServiceImpl implements ProductService{
 	public String sellProduct(Long productId) {
 		logger.debug("Inside ProductServiceImpl's sellProduct.");
 		Optional<Product> product = productRepository.findById(productId);
-		if(product.isEmpty()) {
+		if(!product.isPresent()) {
 			return "FAILURE, Product does not exist.";
 		}else {
-			List<ProductArticle> productArticleList = productArticleRepository.findByProduct(productId);
+			List<ProductArticle> productArticleList = productArticleRepository.findByProduct(product.get());
 			if(productArticleList.isEmpty()) {
 				logger.debug("No Product found!");
 				return "NO Product Data Found!";
@@ -93,6 +93,7 @@ public class ProductServiceImpl implements ProductService{
 					inventoryArticles.add(inventory);
 				}
 				
+				productArticleRepository.deleteAllByProduct(productArticleList.get(0).getProduct());
 				productRepository.deleteById(productArticleList.get(0).getProduct().getProductId());
 				inventoryRepository.saveAll(inventoryArticles);
 			}

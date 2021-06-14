@@ -1,6 +1,5 @@
 package com.example.warehouse.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,14 +22,14 @@ public class ProductArticle {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_article_SEQ_GENERATOR")
 	private Long productArticleId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "article_id")
 	private Inventory inventory;
 	
 	@Column(name = "quantity")
 	private Long quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "product_id")
 	private Product product;
 
