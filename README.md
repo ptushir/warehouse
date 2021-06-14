@@ -4,7 +4,12 @@ Warehouse Management Software
 This software is a solution to manage the warehouse activities like add articles, add products, get products and sell product. 
 It is developed on Java 11 and H2 database.
 
-Steps to run the software:
+How to run the software:
+  
+  Access all the end-points in Swagger UI URL: http://localhost:8080/warehouse/swagger-ui/index.html?configUrl=/warehouse/api-docs/swagger-config
+  
+  Or
+  
   In Postman, run following API's
   1. Create the inventory by passing inventory.json file in body (form-data) of request URL: http://localhost:8080/warehouse/inventory/addArticles 
   2. Create the products by passing products.json file in body (form-data) of request URL: http://localhost:8080/warehouse/product/addProducts
@@ -18,6 +23,5 @@ Json file path: src/main/resources/Json/
   2. Exception handling enhancement
   3. Junit enhancement
   4. Javadoc enhancement
-  5. Swagger UI enhancement
-  6. Code coverage (SonarQube)
-  7. Cloud deployment
+  5. Code coverage (SonarQube)
+  6. Cloud deployment
